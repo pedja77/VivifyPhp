@@ -220,3 +220,4 @@ echo 'Current ram no. in stock ' . $ram->getNumberInStock();
 echo 'Current balance is ' . $shop->getBalance();
 $shop->loanProduct($cpu);
 echo 'Current balance is ' . $shop->getBalance();
+
