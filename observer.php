@@ -8,7 +8,7 @@ class Observable {
     public function __construct($name) {
 
         $this->name = $name;
-        $this->$observers = [];
+        $this->observers = [];
     }
 
     public function getName() {
@@ -28,7 +28,7 @@ class Observable {
 
 class Observer {
     public function __construct($observable) {
-        $observable->registerObserver($this);
+        $observable->registerObservables($this);
     }
 
     public function notify($observable, $message) {
@@ -39,6 +39,9 @@ class Observer {
 
 $observable = new Observable('observable');
 $observer = new Observer($observable);
+$observer2 = new Observer($observable);
+$observer3 = new Observer($observable);
+
 
 $observable->notifyObservers('Hello observers');
 $observable->notifyObservers('I am here');
