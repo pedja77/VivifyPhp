@@ -59,11 +59,13 @@ class Product {
     protected $productName;
     protected $startPrice;
     protected $bidders;
+    protected $productId;
 
-    public function __construct($productName, $startPrice) {
+    public function __construct($productName, $startPrice, $productId) {
         $this->bidders = [];
         $this->productName = $productName;
         $this->startPrice = $startPrice;
+        $this->productId = $productId;
     }
 
     public function notifyOwner() {
@@ -76,6 +78,7 @@ class Product {
 }
 
 $testUser = new User('pedja', 'Predrag', 'Smigeljski');
+$testUser2 = new User('mile', 'Mile', 'Milic');
 $gurtna = new Product('gurtna', 100);
 $mixer = new Product('mixer', 150);
 $cinculator = new Product('cinculator', 140);
@@ -86,3 +89,6 @@ $testUser->addProductToOwnedlist($gurtna);
 var_dump($testUser->getOwnedProducts());
 $testUser->removeProductFromOwnedlist($mixer);
 var_dump($testUser->getOwnedProducts());
+$testUser->sellProduct($cinculator, $testUser2);
+var_dump($testUser->getOwnedProducts());
+var_dump($testUser2->getOwnedProducts());
